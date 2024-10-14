@@ -13,55 +13,76 @@ st.set_page_config(layout="wide", page_title="Wordcloud Generator", page_icon="�
 
 # Custom CSS for styling
 st.markdown("""
-    <style>
+<style>
+    /* Global styles */
     .stApp {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        font-family: Arial, sans-serif; /* Ensures a consistent font across devices */
     }
+
+    /* Title styles */
     .title {
         font-size: 48px;
         font-weight: bold;
         color: #4B0082;
         text-align: center;
         margin-bottom: 30px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
+
+    /* About section styles */
     .about {
         background-color: #f5f7fa;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
+    /* Footer styles */
     .footer {
         text-align: center;
         margin-top: 40px;
         font-size: 14px;
-        color: #6A5ACD
+        color: #6A5ACD;
     }
-    .stButton>button {
+
+    /* Button styles */
+    .stButton > button {
         background-color: #6A5ACD;
         color: white;
+        border: none; /* Remove default border */
         border-radius: 20px;
         padding: 10px 20px;
         font-weight: bold;
-        transition: all 0.3s ease;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer; /* Changes the cursor to pointer on hover */
     }
-    .stButton>button:hover {
+
+    .stButton > button:hover {
         background-color: #483D8B;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .stSelectbox, .stFileUploader {
+
+    /* Selectbox and FileUploader styles */
+    .stSelectbox, 
+    .stFileUploader {
         background-color: white;
         border-radius: 10px;
         padding: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
+    /* Text input styles */
     .text-input {
         background-color: white;
         border-radius: 10px;
         padding: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc; /* Add border for input clarity */
+        width: 100%; /* Make input fields full width */
     }
-    </style>
+</style>
+
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="title">🌀 Wordcloud Generator</div>', unsafe_allow_html=True)
@@ -215,7 +236,7 @@ def main():
 
     # Footer
     st.markdown(
-        '<div class="footer">Created with 💜 by Your Name | '
+        '<div class="footer">Created with 💜 by Sid | '
         '<a href="https://github.com/kumarsid" target="_blank">GitHub</a></div>',
         unsafe_allow_html=True
     )
