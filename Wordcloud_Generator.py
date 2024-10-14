@@ -157,9 +157,9 @@ def make_wordcloud(text_input, cmap='viridis', mask_image=None, min_font_size=10
     plt.imshow(wordcloud)
     
     # Save to a BytesIO object instead of a file
-    #img_buf = io.BytesIO()
-    #plt.savefig(img_buf, format='png', dpi=300, bbox_inches='tight')
-    #img_buf.seek(0)
+    img_buf = io.BytesIO()
+    plt.savefig(img_buf, format='png', dpi=300, bbox_inches='tight')
+    img_buf.seek(0)
     
     return img_buf, wordcloud, joined_string  # Return joined_string here
 
