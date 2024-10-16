@@ -14,75 +14,106 @@ st.set_page_config(layout="wide", page_title="Wordcloud Generator", page_icon="ð
 # Custom CSS for styling
 st.markdown("""
 <style>
-    /* Global styles */
-    .stApp {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        font-family: Arial, sans-serif; /* Ensures a consistent font across devices */
+    /* Reset and base styles */
+    .main {
+        padding: 2rem;
     }
-
-    /* Title styles */
-    .title {
-        font-size: 48px;
-        font-weight: bold;
+    
+    div.stApp {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+    
+    /* Typography */
+    div.stMarkdown {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    
+    /* Custom classes */
+    div[data-testid="stMarkdownContainer"] .title {
+        font-size: 2.5rem;
+        font-weight: 700;
         color: #4B0082;
         text-align: center;
-        margin-bottom: 30px;
+        margin: 2rem 0;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
-
-    /* About section styles */
-    .about {
-        background-color: #f5f7fa;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    div[data-testid="stMarkdownContainer"] .about {
+        background-color: rgba(245, 247, 250, 0.95);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin: 1rem 0;
     }
-
-    /* Footer styles */
-    .footer {
+    
+    div[data-testid="stMarkdownContainer"] .footer {
         text-align: center;
-        margin-top: 40px;
-        font-size: 14px;
+        padding: 1rem;
         color: #6A5ACD;
+        font-size: 0.875rem;
     }
-
-    /* Button styles */
+    
+    /* Button styling */
     .stButton > button {
+        width: auto;
         background-color: #6A5ACD;
         color: white;
-        border: none; /* Remove default border */
-        border-radius: 20px;
-        padding: 10px 20px;
-        font-weight: bold;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer; /* Changes the cursor to pointer on hover */
+        border: none;
+        border-radius: 25px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
     }
-
+    
     .stButton > button:hover {
         background-color: #483D8B;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(106, 90, 205, 0.2);
+        transform: translateY(-1px);
     }
-
-    /* Selectbox and FileUploader styles */
-    .stSelectbox, 
-    .stFileUploader {
-        background-color: white;
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    .stButton > button:active {
+        transform: translateY(0);
     }
-
-    /* Text input styles */
-    .text-input {
+    
+    /* Input elements */
+    .stTextInput > div > div > input,
+    .stSelectbox > div > div > select,
+    .stFileUploader > div {
         background-color: white;
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ccc; /* Add border for input clarity */
-        width: 100%; /* Make input fields full width */
+        border-radius: 8px;
+        border: 1px solid rgba(106, 90, 205, 0.2);
+        padding: 0.5rem;
+        transition: all 0.2s ease;
+    }
+    
+    .stTextInput > div > div > input:focus,
+    .stSelectbox > div > div > select:focus {
+        border-color: #6A5ACD;
+        box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.2);
+    }
+    
+    /* File uploader specific */
+    .stFileUploader > div:hover {
+        border-color: #6A5ACD;
+    }
+    
+    /* Container spacing */
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        div[data-testid="stMarkdownContainer"] .title {
+            font-size: 2rem;
+        }
+        
+        .stButton > button {
+            width: 100%;
+        }
     }
 </style>
-
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="title">ðŸŒ€ Wordcloud Generator</div>', unsafe_allow_html=True)
