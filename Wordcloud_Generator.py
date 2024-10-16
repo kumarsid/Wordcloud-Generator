@@ -14,109 +14,107 @@ st.set_page_config(layout="wide", page_title="Wordcloud Generator", page_icon="ð
 # Custom CSS for styling
 st.markdown("""
 <style>
-    /* Reset and base styles */
-    .main {
-        padding: 2rem;
+    /* Override Streamlit's default styles */
+    .stApp {
+        max-width: 100%;
+        padding: 1rem;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
     }
-    
-    div.stApp {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+    /* Header/Title styling */
+    .css-1v0mbdj.e115fcil1 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
     }
-    
-    /* Typography */
-    div.stMarkdown {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    [data-testid="stHeader"] {
+        background-color: transparent;
     }
-    
-    /* Custom classes */
-    div[data-testid="stMarkdownContainer"] .title {
-        font-size: 2.5rem;
-        font-weight: 700;
+
+    /* Title text */
+    .title-text {
+        font-size: 36px;
+        font-weight: bold;
         color: #4B0082;
         text-align: center;
-        margin: 2rem 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
     }
-    
-    div[data-testid="stMarkdownContainer"] .about {
-        background-color: rgba(245, 247, 250, 0.95);
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    /* File uploader styling */
+    [data-testid="stFileUploader"] {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin: 1rem 0;
     }
-    
-    div[data-testid="stMarkdownContainer"] .footer {
-        text-align: center;
-        padding: 1rem;
-        color: #6A5ACD;
-        font-size: 0.875rem;
+
+    /* Input area styling */
+    .stTextArea textarea {
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        padding: 10px;
     }
-    
+
     /* Button styling */
     .stButton > button {
-        width: auto;
-        background-color: #6A5ACD;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        padding: 0.5rem 1.5rem;
-        font-weight: 600;
-        transition: all 0.2s ease;
+        background-color: #6A5ACD !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 20px !important;
+        padding: 10px 20px !important;
+        font-weight: bold !important;
+        width: auto !important;
+        margin: 1rem 0 !important;
     }
-    
+
     .stButton > button:hover {
-        background-color: #483D8B;
-        box-shadow: 0 4px 12px rgba(106, 90, 205, 0.2);
-        transform: translateY(-1px);
+        background-color: #483D8B !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
     }
-    
-    .stButton > button:active {
-        transform: translateY(0);
+
+    /* Radio button group styling */
+    .stRadio > label {
+        color: #4B0082;
+        font-weight: 500;
     }
-    
-    /* Input elements */
-    .stTextInput > div > div > input,
-    .stSelectbox > div > div > select,
-    .stFileUploader > div {
-        background-color: white;
-        border-radius: 8px;
-        border: 1px solid rgba(106, 90, 205, 0.2);
-        padding: 0.5rem;
-        transition: all 0.2s ease;
+
+    /* Sidebar styling */
+    [data-testid="stSidebar"] {
+        background-color: #f8f9fa;
+        padding: 2rem 1rem;
     }
-    
-    .stTextInput > div > div > input:focus,
-    .stSelectbox > div > div > select:focus {
-        border-color: #6A5ACD;
-        box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.2);
+
+    /* Footer styling */
+    footer {
+        text-align: center;
+        padding: 1rem;
+        font-size: 14px;
+        color: #6A5ACD;
     }
-    
-    /* File uploader specific */
-    .stFileUploader > div:hover {
-        border-color: #6A5ACD;
+
+    /* Make sure elements don't overflow */
+    .element-container {
+        width: 100% !important;
     }
-    
-    /* Container spacing */
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
-    
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
-        div[data-testid="stMarkdownContainer"] .title {
-            font-size: 2rem;
+        .stApp {
+            padding: 0.5rem;
         }
         
-        .stButton > button {
-            width: 100%;
+        .title-text {
+            font-size: 28px;
         }
     }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="title">ðŸŒ€ Wordcloud Generator</div>', unsafe_allow_html=True)
+# Apply the title using the custom class
+st.markdown('<h1 class="title-text">Wordcloud Generator</h1>', unsafe_allow_html=True)
 
 # About section moved to the main area
 def about_section():
