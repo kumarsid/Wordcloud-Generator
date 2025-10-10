@@ -224,7 +224,7 @@ def main():
     
 
     st.sidebar.title("Settings")
-    
+    st.sidebar.header("This is testing the changes")
     # Input method selection
     input_method = st.sidebar.radio("Choose input method", ["Upload File", "Enter Text"])
     
